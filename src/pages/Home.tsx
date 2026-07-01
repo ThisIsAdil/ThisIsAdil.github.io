@@ -7,6 +7,7 @@ import {
   FeaturedWork,
   FinalCTA,
   Hero,
+  Principles,
   ProcessSection,
   ProofSection,
   ServicesOverview,
@@ -23,8 +24,9 @@ export default function Home() {
       />
       <Hero />
       <TrustBand />
-      <ServicesOverview />
       <FeaturedWork />
+      <Principles />
+      <ServicesOverview />
       <ProcessSection />
       <ProofSection />
       <AboutSnippet />

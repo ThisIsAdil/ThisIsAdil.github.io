@@ -41,10 +41,10 @@ export default function FeaturedWork() {
                     to={`/work/${slug}`}
                     className={cn('group block', flip && 'lg:order-2')}
                   >
-                    <BrowserFrame className="transition-transform duration-[var(--duration-base)] ease-[var(--ease-out-expo)] group-hover:-translate-y-1">
+                    <BrowserFrame className="transition-[transform,border-color] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] group-hover:-translate-y-1 group-hover:border-accent/50">
                       <ImagePlaceholder
                         label={`[${fm.title} Screenshot]`}
-                        className="aspect-[16/10] rounded-none border-0"
+                        className="aspect-[16/10] rounded-none border-0 transition-transform duration-[var(--duration-slow)] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
                       />
                     </BrowserFrame>
                   </Link>

@@ -4,6 +4,7 @@ import SeoHead from '../components/SeoHead'
 import Breadcrumbs from '../components/Breadcrumbs'
 import Prose from '../components/Prose'
 import ImagePlaceholder from '../components/ImagePlaceholder'
+import BrowserFrame from '../components/BrowserFrame'
 import { getWork } from '../content'
 import { getWorkBody } from '../content/bodies'
 import { testimonials } from '../data/content'
@@ -75,10 +76,12 @@ export default function WorkDetail() {
           </ul>
         </div>
 
-        <ImagePlaceholder
-          label={`[${fm.title} Screenshot]`}
-          className="mt-10 aspect-[16/9]"
-        />
+        <BrowserFrame className="mt-10">
+          <ImagePlaceholder
+            label={`[${fm.title} Screenshot]`}
+            className="aspect-[16/9] rounded-none border-0"
+          />
+        </BrowserFrame>
 
         <div className="mt-14 max-w-3xl">
           <Prose>

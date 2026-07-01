@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Eyebrow from '../components/Eyebrow'
 import { Card, Container } from '../ui'
 import SeoHead from '../components/SeoHead'
 import ScrollReveal from '../components/ScrollReveal'
@@ -15,10 +16,7 @@ export default function Blog() {
       />
       <Container className="py-16 sm:py-24">
         <div className="max-w-2xl">
-          <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
-            <span className="h-px w-6 bg-border-strong" aria-hidden />
-            Writing
-          </p>
+          <Eyebrow>Writing</Eyebrow>
           <h1 className="mt-4 text-5xl font-semibold tracking-tight sm:text-6xl">
             Notes on the craft
           </h1>

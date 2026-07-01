@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Eyebrow from '../components/Eyebrow'
 import { Button, Container, Section } from '../ui'
 import ScrollReveal from '../components/ScrollReveal'
 import Headshot from '../components/Headshot'
@@ -24,10 +25,7 @@ export default function AboutSnippet() {
 
             <ScrollReveal delay={80}>
               <div className="max-w-2xl">
-                <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
-                  <span className="h-px w-6 bg-border-strong" aria-hidden />
-                  About
-                </p>
+                <Eyebrow>About</Eyebrow>
                 <h2 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
                   Senior engineering, direct from the developer.
                 </h2>

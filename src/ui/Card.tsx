@@ -20,7 +20,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
       className={cn(
         'rounded-lg border border-border bg-surface shadow-sm',
         interactive &&
-          'transition-[border-color,box-shadow,transform] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-border-strong hover:shadow-md',
+          'transition-[border-color,box-shadow,transform] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] hover:-translate-y-1 hover:border-border-strong hover:shadow-[0_18px_44px_-18px_rgba(99,102,241,0.32)]',
         className,
       )}
       {...props}

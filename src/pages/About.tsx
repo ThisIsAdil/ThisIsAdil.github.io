@@ -1,4 +1,5 @@
 import { MessageSquare, Search, Wrench, Zap } from 'lucide-react'
+import Eyebrow from '../components/Eyebrow'
 import { Container, Section } from '../ui'
 import SeoHead from '../components/SeoHead'
 import SectionHeading from '../components/SectionHeading'
@@ -58,10 +59,7 @@ export default function About() {
 
           <ScrollReveal delay={80}>
             <div className="max-w-2xl">
-              <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
-                <span className="h-px w-6 bg-border-strong" aria-hidden />
-                About
-              </p>
+              <Eyebrow>About</Eyebrow>
               <h1 className="mt-4 text-balance text-4xl font-semibold tracking-tight sm:text-5xl">
                 A full-stack developer who cares about the details.
               </h1>

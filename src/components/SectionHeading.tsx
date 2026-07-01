@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react'
 import { cn } from '../lib/cn'
+import Eyebrow from './Eyebrow'
 
 interface SectionHeadingProps {
   eyebrow?: string
@@ -17,13 +18,8 @@ export default function SectionHeading({
 }: SectionHeadingProps) {
   return (
     <div className={cn('max-w-2xl', className)}>
-      {eyebrow && (
-        <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
-          <span className="h-px w-6 bg-border-strong" aria-hidden />
-          {eyebrow}
-        </p>
-      )}
-      <h2 className="mt-3 text-4xl font-semibold tracking-tight">{title}</h2>
+      {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+      <h2 className="mt-4 text-4xl font-semibold tracking-tight">{title}</h2>
       {intro && <p className="measure mt-4 text-lg text-fg-muted">{intro}</p>}
     </div>
   )

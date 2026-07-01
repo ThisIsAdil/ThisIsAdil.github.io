@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import Eyebrow from '../components/Eyebrow'
 import { Check } from 'lucide-react'
 import { Badge, Button, Container, Section } from '../ui'
 import SeoHead from '../components/SeoHead'
@@ -20,10 +21,7 @@ export default function Services() {
       {/* Intro */}
       <Container className="py-16 sm:py-24">
         <div className="max-w-3xl">
-          <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
-            <span className="h-px w-6 bg-border-strong" aria-hidden />
-            Services
-          </p>
+          <Eyebrow>Services</Eyebrow>
           <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight sm:text-6xl">
             Fast, SEO-strong sites and platforms — built to convert.
           </h1>
@@ -39,7 +37,7 @@ export default function Services() {
             <ScrollReveal key={service.slug}>
               <div className="grid gap-8 rounded-lg border border-border bg-surface p-8 shadow-sm md:grid-cols-[1fr_1.4fr] md:p-10">
                 <div>
-                  <span className="font-display text-sm font-semibold text-fg-subtle">
+                  <span className="text-gradient font-display text-xl font-bold tabular-nums">
                     {String(i + 1).padStart(2, '0')}
                   </span>
                   <h2 className="mt-3 font-display text-2xl font-semibold">

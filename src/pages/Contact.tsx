@@ -1,4 +1,5 @@
 import { ArrowUpRight, CalendarClock, Mail, MessageCircle } from 'lucide-react'
+import Eyebrow from '../components/Eyebrow'
 import { Card, Container } from '../ui'
 import SeoHead from '../components/SeoHead'
 import { site } from '../config/site'
@@ -37,10 +38,7 @@ export default function Contact() {
       />
       <Container className="py-16 sm:py-24">
         <div className="max-w-2xl">
-          <p className="flex items-center gap-2 text-sm font-medium uppercase tracking-widest text-fg-subtle">
-            <span className="h-px w-6 bg-border-strong" aria-hidden />
-            Contact
-          </p>
+          <Eyebrow>Contact</Eyebrow>
           <h1 className="mt-4 text-balance text-5xl font-semibold tracking-tight sm:text-6xl">
             Start a project
           </h1>

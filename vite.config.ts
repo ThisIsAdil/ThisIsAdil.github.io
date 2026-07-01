@@ -1,6 +1,10 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import mdx from '@mdx-js/rollup'
+import remarkFrontmatter from 'remark-frontmatter'
+import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
+import remarkGfm from 'remark-gfm'
 import { fileURLToPath, URL } from 'node:url'
 import { copyFile } from 'node:fs/promises'
 import { join } from 'node:path'
@@ -11,7 +15,22 @@ import type {} from 'vite-react-ssg'
 // When a custom domain is added later, this stays '/'.
 export default defineConfig({
   base: '/',
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    // MDX must run before the React plugin. Frontmatter is exposed as a named
+    // `frontmatter` export and validated with zod in src/content.
+    {
+      enforce: 'pre',
+      ...mdx({
+        remarkPlugins: [
+          remarkFrontmatter,
+          [remarkMdxFrontmatter, { name: 'frontmatter' }],
+          remarkGfm,
+        ],
+      }),
+    },
+    react({ include: /\.(mdx|js|jsx|ts|tsx)$/ }),
+    tailwindcss(),
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

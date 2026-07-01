@@ -11,16 +11,6 @@ export interface Service {
   priceFrom?: string
 }
 
-export interface Project {
-  slug: string
-  name: string
-  industry: string
-  role: string
-  summary: string
-  tags: string[]
-  featured: boolean
-}
-
 export interface ProcessStep {
   title: string
   description: string
@@ -76,49 +66,6 @@ export const services: Service[] = [
       'Structured data',
       'Metadata',
     ],
-  },
-]
-
-export const projects: Project[] = [
-  {
-    slug: 'future-meds-academy',
-    name: 'Future Meds Academy',
-    industry: 'EdTech · Medical Entrance Prep',
-    role: 'Full-stack development, architecture & deployment',
-    summary:
-      'A full-stack learning platform — marketing site, student portal, faculty tools, and admin CMS — built for trust, enquiries, and long-term scale.',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'JWT'],
-    featured: true,
-  },
-  {
-    slug: 'blooms-academy',
-    name: 'Blooms Academy',
-    industry: 'EdTech · IELTS',
-    role: 'Full-stack development & deployment',
-    summary:
-      'A multi-role IELTS platform with AI-assisted writing evaluation, a timed exam engine, live classes, and integrated payments.',
-    tags: ['React', 'Node.js', 'MongoDB', 'Google Gemini', 'Razorpay'],
-    featured: true,
-  },
-  {
-    slug: 'mh-associates',
-    name: 'MH Associates',
-    industry: 'Electrical EPC',
-    role: 'Frontend development & deployment',
-    summary:
-      'A professional marketing site for an electrical EPC firm — credibility-first, conversion-focused, and performance-optimized.',
-    tags: ['React', 'Vite', 'Tailwind CSS'],
-    featured: true,
-  },
-  {
-    slug: 'mavin-star',
-    name: 'Mavin Star Education & Welfare Society',
-    industry: 'Non-profit',
-    role: 'Frontend development & deployment',
-    summary:
-      'A lightweight, fully static NGO site with clear donation and volunteer flows — fast and easy to maintain.',
-    tags: ['React', 'Vite', 'React Router'],
-    featured: false,
   },
 ]
 

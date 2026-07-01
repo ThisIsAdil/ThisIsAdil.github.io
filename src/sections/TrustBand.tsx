@@ -1,5 +1,5 @@
 import { Container } from '../ui'
-import { projects } from '../data/content'
+import { workEntries } from '../content'
 
 /**
  * Lightweight credibility strip — real project names (no logos yet). Honest
@@ -13,12 +13,12 @@ export default function TrustBand() {
           Recent work
         </p>
         <ul className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
-          {projects.map((p) => (
+          {workEntries.map(({ slug, frontmatter: fm }) => (
             <li
-              key={p.slug}
+              key={slug}
               className="font-display text-sm font-medium text-fg-muted"
             >
-              {p.name}
+              {fm.title}
             </li>
           ))}
         </ul>

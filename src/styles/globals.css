@@ -1,0 +1,76 @@
+@import 'tailwindcss';
+
+/* Drive dark mode from the [data-theme="dark"] attribute (set pre-paint in
+   index.html), not the OS media query, so the toggle works at runtime. */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ── Design tokens (M0 minimal monochrome; full ramp lands in M1) ───────── */
+:root {
+  --color-bg: #ffffff;
+  --color-bg-subtle: #fafafa;
+  --color-fg: #0a0a0b;
+  --color-muted: #525252;
+  --color-border: #e5e5e5;
+  --color-accent: #4f46e5; /* reserved: focus rings + occasional links only */
+
+  --radius: 0.625rem; /* ~10px, medium-soft */
+}
+
+[data-theme='dark'] {
+  --color-bg: #0a0a0b;
+  --color-bg-subtle: #131315;
+  --color-fg: #fafafa;
+  --color-muted: #a3a3a3;
+  --color-border: #262626;
+  --color-accent: #818cf8;
+}
+
+/* Expose tokens as Tailwind utilities (bg-bg, text-fg, border-border, …).
+   `inline` makes utilities emit var() references so they follow theme swaps. */
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-bg-subtle: var(--color-bg-subtle);
+  --color-fg: var(--color-fg);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-accent: var(--color-accent);
+
+  --radius-base: var(--radius);
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica,
+    Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    color-scheme: light dark;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible focus for keyboard users (never rely on color alone). */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

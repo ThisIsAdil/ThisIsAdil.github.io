@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /styleguide
+
+# Sitemap is generated in a later milestone (M7).
+# Sitemap: https://REPLACE-username.github.io/sitemap.xml

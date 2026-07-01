@@ -1,0 +1,10 @@
+// Page-block layer. Sections compose components + primitives with real content.
+export { default as Hero } from './Hero'
+export { default as TrustBand } from './TrustBand'
+export { default as ServicesOverview } from './ServicesOverview'
+export { default as FeaturedWork } from './FeaturedWork'
+export { default as ProcessSection } from './ProcessSection'
+export { default as ProofSection } from './ProofSection'
+export { default as AboutSnippet } from './AboutSnippet'
+export { default as FAQSection } from './FAQSection'
+export { default as FinalCTA } from './FinalCTA'

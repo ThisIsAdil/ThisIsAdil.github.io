@@ -7,13 +7,13 @@ export default function WorkDetail() {
 
   return (
     <article className="max-w-2xl">
-      <Link to="/work" className="text-sm text-muted hover:text-fg">
+      <Link to="/work" className="text-sm text-fg-muted hover:text-fg">
         ← Back to work
       </Link>
       <h1 className="mt-4 text-4xl font-semibold tracking-tight">
         Case study: <span className="text-accent">{slug}</span>
       </h1>
-      <p className="mt-4 text-muted">
+      <p className="mt-4 text-fg-muted">
         If you loaded this page by pasting the URL directly (a hard refresh /
         deep link) and it rendered without a 404, the GitHub Pages routing
         strategy works. That is the whole point of M0.

@@ -3,4 +3,4 @@ Allow: /
 Disallow: /styleguide
 
 # Sitemap is generated in a later milestone (M7).
-# Sitemap: https://REPLACE-username.github.io/sitemap.xml
+# Sitemap: https://thisisadil.github.io/sitemap.xml

@@ -3,6 +3,7 @@ import RootLayout from './layouts/RootLayout'
 import Home from './pages/Home'
 import Work from './pages/Work'
 import WorkDetail from './pages/WorkDetail'
+import Styleguide from './pages/Styleguide'
 import NotFound from './pages/NotFound'
 
 // M0 spike: a handful of routes to prove SSG emits real HTML per route,
@@ -21,6 +22,8 @@ export const routes: RouteRecord[] = [
         // is generated and deep-linkable without a client-only fallback.
         getStaticPaths: () => ['/work/sample-academy'],
       },
+      // Hidden internal QA surface: noindex (Head) + blocked in robots.txt.
+      { path: 'styleguide', Component: Styleguide },
       { path: '*', Component: NotFound },
     ],
   },

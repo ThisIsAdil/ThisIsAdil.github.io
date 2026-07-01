@@ -1,37 +1,26 @@
-import { useEffect, useState } from 'react'
+import { Moon, Sun } from 'lucide-react'
+import { useTheme } from '../hooks/useTheme'
 
-type Theme = 'light' | 'dark'
-
-// Minimal M0 toggle. The full token-driven useTheme hook lands in M1; this proves
-// the [data-theme] swap + persistence work through SSG hydration without a FOUC.
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState<Theme | null>(null)
-
-  // Read the theme the pre-paint script already applied (avoids hydration flicker).
-  useEffect(() => {
-    const current = (document.documentElement.dataset.theme as Theme) || 'light'
-    setTheme(current)
-  }, [])
-
-  function toggle() {
-    const next: Theme = theme === 'dark' ? 'light' : 'dark'
-    document.documentElement.dataset.theme = next
-    try {
-      localStorage.setItem('theme', next)
-    } catch {
-      /* ignore write failures (private mode, etc.) */
-    }
-    setTheme(next)
-  }
+  const { theme, toggle } = useTheme()
 
   return (
     <button
       type="button"
       onClick={toggle}
-      aria-label="Toggle color theme"
-      className="rounded-base border border-border px-3 py-1.5 text-sm hover:text-fg"
+      aria-label={
+        theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
+      }
+      className="inline-flex size-9 items-center justify-center rounded-md border border-border text-fg-muted transition-colors duration-[var(--duration-fast)] hover:border-border-strong hover:text-fg"
     >
-      {theme === null ? 'Theme' : theme === 'dark' ? 'Light' : 'Dark'}
+      {/* Placeholder until mounted keeps SSG markup and first render identical. */}
+      {theme === null ? (
+        <span className="size-[18px]" aria-hidden />
+      ) : theme === 'dark' ? (
+        <Sun size={18} strokeWidth={1.75} aria-hidden />
+      ) : (
+        <Moon size={18} strokeWidth={1.75} aria-hidden />
+      )}
     </button>
   )
 }

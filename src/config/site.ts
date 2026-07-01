@@ -7,9 +7,8 @@ export const site = {
   name: 'Build with Adil',
   author: 'Adil Shaikh',
 
-  // REPLACE: your GitHub user-page URL, then later your custom domain.
-  // For a user page the repo is `<username>.github.io` and this is the root URL.
-  url: 'https://REPLACE-username.github.io',
+  // GitHub user-page URL (served lowercase). Swap to a custom domain later.
+  url: 'https://thisisadil.github.io',
 
   description:
     'Adil Shaikh — freelance full-stack developer. Fast, SEO-strong websites and web apps, engineered with care.',
@@ -28,8 +27,8 @@ export const site = {
   },
 
   social: {
-    // REPLACE with your profiles.
-    github: 'https://github.com/REPLACE-username',
+    github: 'https://github.com/ThisIsAdil',
+    // REPLACE with your LinkedIn profile.
     linkedin: 'https://www.linkedin.com/in/REPLACE-username',
   },
 } as const

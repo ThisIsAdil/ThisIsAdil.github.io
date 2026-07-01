@@ -1,0 +1,19 @@
+/* Self-hosted variable fonts (latin). No third-party network request → faster
+   first paint + privacy. Licenses: Satoshi = ITF Free Font License (public/fonts/
+   FFL.txt); Inter = SIL OFL. `swap` shows text immediately with a tuned fallback. */
+
+@font-face {
+  font-family: 'Satoshi';
+  src: url('/fonts/satoshi-variable.woff2') format('woff2-variations');
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-variable-latin.woff2') format('woff2-variations');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}

@@ -5,14 +5,16 @@ import Breadcrumbs from '../components/Breadcrumbs'
 import Prose from '../components/Prose'
 import ImagePlaceholder from '../components/ImagePlaceholder'
 import { getWork } from '../content'
+import { getWorkBody } from '../content/bodies'
 import { testimonials } from '../data/content'
 import { absoluteUrl, breadcrumbLd } from '../lib/seo'
 
 export default function WorkDetail() {
   const { slug = '' } = useParams<{ slug: string }>()
   const entry = getWork(slug)
+  const Component = getWorkBody(slug)
 
-  if (!entry) {
+  if (!entry || !Component) {
     return (
       <Container className="py-24">
         <h1 className="text-4xl font-semibold">Case study not found</h1>
@@ -23,7 +25,7 @@ export default function WorkDetail() {
     )
   }
 
-  const { frontmatter: fm, Component } = entry
+  const fm = entry.frontmatter
   const testimonial = testimonials.find((t) => t.role.includes(fm.title))
 
   return (

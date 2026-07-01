@@ -3,6 +3,7 @@ import { Container, Section } from '../ui'
 import SeoHead from '../components/SeoHead'
 import SectionHeading from '../components/SectionHeading'
 import ScrollReveal from '../components/ScrollReveal'
+import Headshot from '../components/Headshot'
 import FinalCTA from '../sections/FinalCTA'
 import { personLd } from '../lib/seo'
 import { site } from '../config/site'
@@ -50,13 +51,7 @@ export default function About() {
                 className="absolute -inset-3 -z-10 rounded-2xl border border-border"
               />
               <div className="overflow-hidden rounded-xl border border-border shadow-md">
-                <img
-                  src="/images/professional-headshot.png"
-                  alt="Adil Shaikh"
-                  width={600}
-                  height={750}
-                  className="aspect-[4/5] w-full object-cover object-top"
-                />
+                <Headshot />
               </div>
             </div>
           </ScrollReveal>

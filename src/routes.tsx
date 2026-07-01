@@ -2,46 +2,67 @@ import type { RouteRecord } from 'vite-react-ssg'
 import { workEntries, blogEntries } from './content'
 import RootLayout from './layouts/RootLayout'
 import Home from './pages/Home'
-import Work from './pages/Work'
-import WorkDetail from './pages/WorkDetail'
-import Services from './pages/Services'
-import About from './pages/About'
-import Contact from './pages/Contact'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
-import Privacy from './pages/Privacy'
 import NotFound from './pages/NotFound'
 
-// Every known route is prerendered to static HTML (see vite.config ssgOptions).
-// Dynamic routes derive their static paths from the MDX content collections.
+// Home + shell load eagerly (the landing payload). Every other route is a lazy
+// chunk so it stays out of the homepage bundle — still fully SSG-prerendered
+// (vite-react-ssg awaits each import during the build), so SEO is unaffected.
+const lazy =
+  (importer: () => Promise<{ default: React.ComponentType }>) => () =>
+    importer().then((m) => ({ Component: m.default }))
+
 export const routes: RouteRecord[] = [
   {
     path: '/',
     Component: RootLayout,
     children: [
       { index: true, Component: Home },
-      { path: 'work', Component: Work },
+      {
+        path: 'work',
+        lazy: lazy(() => import('./pages/Work')),
+        entry: 'src/pages/Work.tsx',
+      },
       {
         path: 'work/:slug',
-        Component: WorkDetail,
+        lazy: lazy(() => import('./pages/WorkDetail')),
+        entry: 'src/pages/WorkDetail.tsx',
         getStaticPaths: () => workEntries.map((e) => `/work/${e.slug}`),
       },
-      { path: 'services', Component: Services },
-      { path: 'about', Component: About },
-      { path: 'contact', Component: Contact },
-      { path: 'blog', Component: Blog },
+      {
+        path: 'services',
+        lazy: lazy(() => import('./pages/Services')),
+        entry: 'src/pages/Services.tsx',
+      },
+      {
+        path: 'about',
+        lazy: lazy(() => import('./pages/About')),
+        entry: 'src/pages/About.tsx',
+      },
+      {
+        path: 'contact',
+        lazy: lazy(() => import('./pages/Contact')),
+        entry: 'src/pages/Contact.tsx',
+      },
+      {
+        path: 'blog',
+        lazy: lazy(() => import('./pages/Blog')),
+        entry: 'src/pages/Blog.tsx',
+      },
       {
         path: 'blog/:slug',
-        Component: BlogPost,
+        lazy: lazy(() => import('./pages/BlogPost')),
+        entry: 'src/pages/BlogPost.tsx',
         getStaticPaths: () => blogEntries.map((e) => `/blog/${e.slug}`),
       },
-      { path: 'privacy', Component: Privacy },
-      // Hidden internal QA surface: noindex + robots-blocked. Lazy-loaded so its
-      // demo code never ships in the main (user-facing) bundle.
+      {
+        path: 'privacy',
+        lazy: lazy(() => import('./pages/Privacy')),
+        entry: 'src/pages/Privacy.tsx',
+      },
+      // Hidden internal QA surface: noindex + robots-blocked.
       {
         path: 'styleguide',
-        lazy: () =>
-          import('./pages/Styleguide').then((m) => ({ Component: m.default })),
+        lazy: lazy(() => import('./pages/Styleguide')),
         entry: 'src/pages/Styleguide.tsx',
       },
       { path: '*', Component: NotFound },

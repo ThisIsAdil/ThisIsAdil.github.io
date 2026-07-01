@@ -4,6 +4,7 @@ import SeoHead from '../components/SeoHead'
 import Breadcrumbs from '../components/Breadcrumbs'
 import Prose from '../components/Prose'
 import { getPost } from '../content'
+import { getBlogBody } from '../content/bodies'
 import { formatDate } from '../lib/format'
 import { absoluteUrl, breadcrumbLd } from '../lib/seo'
 import { site } from '../config/site'
@@ -11,8 +12,9 @@ import { site } from '../config/site'
 export default function BlogPost() {
   const { slug = '' } = useParams<{ slug: string }>()
   const post = getPost(slug)
+  const Component = getBlogBody(slug)
 
-  if (!post) {
+  if (!post || !Component) {
     return (
       <Container className="py-24">
         <h1 className="text-4xl font-semibold">Post not found</h1>
@@ -23,7 +25,7 @@ export default function BlogPost() {
     )
   }
 
-  const { frontmatter: fm, Component } = post
+  const fm = post.frontmatter
 
   return (
     <>

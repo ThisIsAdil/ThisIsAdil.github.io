@@ -5,11 +5,32 @@ import mdx from '@mdx-js/rollup'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import remarkGfm from 'remark-gfm'
+import { imagetools } from 'vite-imagetools'
 import { fileURLToPath, URL } from 'node:url'
-import { copyFile } from 'node:fs/promises'
+import { copyFile, readdir, writeFile } from 'node:fs/promises'
 import { join } from 'node:path'
+import { site } from './src/config/site'
 // Loads vite-react-ssg's `ssgOptions` augmentation onto Vite's config type.
 import type {} from 'vite-react-ssg'
+
+// Build a sitemap.xml from the prerendered pages (excluding 404 + styleguide).
+async function writeSitemap(dir: string) {
+  const files = (await readdir(dir, { recursive: true })) as string[]
+  const routes = [
+    ...new Set(
+      files
+        .filter((f) => f.endsWith('index.html'))
+        .map((f) => '/' + f.split(/[\\/]/).slice(0, -1).join('/'))
+        .map((r) => (r === '/' ? '/' : r.replace(/\/$/, '')))
+        .filter((r) => !r.startsWith('/styleguide') && !r.startsWith('/404')),
+    ),
+  ].sort()
+  const urls = routes
+    .map((r) => `  <url><loc>${site.url}${r}</loc></url>`)
+    .join('\n')
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
+  await writeFile(join(dir, 'sitemap.xml'), xml)
+}
 
 // User-page deploy (username.github.io) serves at root, so base is '/'.
 // When a custom domain is added later, this stays '/'.
@@ -30,6 +51,7 @@ export default defineConfig({
     },
     react({ include: /\.(mdx|js|jsx|ts|tsx)$/ }),
     tailwindcss(),
+    imagetools(),
   ],
   resolve: {
     alias: {
@@ -47,6 +69,7 @@ export default defineConfig({
     // prerendered, so this only fires for genuine misses.
     onFinished: async (dir) => {
       await copyFile(join(dir, '404', 'index.html'), join(dir, '404.html'))
+      await writeSitemap(dir)
     },
   },
 })

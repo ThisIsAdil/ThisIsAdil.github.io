@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /styleguide
 
-# Sitemap is generated in a later milestone (M7).
-# Sitemap: https://thisisadil.github.io/sitemap.xml
+Sitemap: https://thisisadil.github.io/sitemap.xml

@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { Button, Container, Section } from '../ui'
 import ScrollReveal from '../components/ScrollReveal'
+import Headshot from '../components/Headshot'
 
 export default function AboutSnippet() {
   return (
@@ -16,14 +17,7 @@ export default function AboutSnippet() {
                   className="absolute -inset-3 -z-10 rounded-2xl border border-border"
                 />
                 <div className="overflow-hidden rounded-xl border border-border shadow-md">
-                  <img
-                    src="/images/professional-headshot.png"
-                    alt="Adil Shaikh"
-                    width={600}
-                    height={750}
-                    loading="lazy"
-                    className="aspect-[4/5] w-full object-cover object-top"
-                  />
+                  <Headshot />
                 </div>
               </div>
             </ScrollReveal>

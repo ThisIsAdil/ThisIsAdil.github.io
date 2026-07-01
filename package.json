@@ -10,6 +10,8 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
+    "budget": "node scripts/check-budget.mjs",
+    "og": "node scripts/generate-og.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
@@ -43,9 +45,11 @@
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
     "prettier": "^3.4.2",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.3.2",
     "typescript": "^5.9.0",
     "typescript-eslint": "^8.20.0",
-    "vite": "^7.3.6"
+    "vite": "^7.3.6",
+    "vite-imagetools": "^10.0.1"
   }
 }

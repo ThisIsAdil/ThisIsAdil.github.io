@@ -1,76 +1,93 @@
-import type { ComponentType } from 'react'
 import { z } from 'zod'
 
-/* ── Frontmatter schemas (zod-validated → a malformed file fails the build) ── */
-
-const workSchema = z.object({
-  title: z.string(),
-  industry: z.string(),
-  role: z.string(),
-  summary: z.string(),
-  tags: z.array(z.string()),
-  featured: z.boolean().default(false),
-  order: z.number().default(999),
-})
-
-const blogSchema = z.object({
-  title: z.string(),
-  description: z.string(),
-  // YAML may parse an unquoted date as a Date; normalize to YYYY-MM-DD.
-  date: z
-    .union([z.string(), z.date()])
-    .transform((d) =>
-      typeof d === 'string' ? d : d.toISOString().slice(0, 10),
-    ),
-  tags: z.array(z.string()).default([]),
-})
-
-export type WorkFrontmatter = z.infer<typeof workSchema>
-export type BlogFrontmatter = z.infer<typeof blogSchema>
+export interface WorkFrontmatter {
+  title: string
+  industry: string
+  role: string
+  summary: string
+  tags: string[]
+  featured: boolean
+  order: number
+}
+export interface BlogFrontmatter {
+  title: string
+  description: string
+  date: string
+  tags: string[]
+}
 
 export interface WorkEntry {
   slug: string
   frontmatter: WorkFrontmatter
-  Component: ComponentType
 }
 export interface BlogEntry {
   slug: string
   frontmatter: BlogFrontmatter
-  Component: ComponentType
 }
 
-interface MdxModule {
-  default: ComponentType
-  frontmatter: unknown
+// zod validation runs only during the SSG/build (import.meta.env.SSR); on the
+// client the branch is dead code, so zod tree-shakes out of the browser bundle.
+// A malformed frontmatter file still fails the build.
+function parseWork(fm: unknown): WorkFrontmatter {
+  if (import.meta.env.SSR) {
+    return z
+      .object({
+        title: z.string(),
+        industry: z.string(),
+        role: z.string(),
+        summary: z.string(),
+        tags: z.array(z.string()),
+        featured: z.boolean().default(false),
+        order: z.number().default(999),
+      })
+      .parse(fm) as WorkFrontmatter
+  }
+  return fm as WorkFrontmatter
 }
 
-const slugFromPath = (p: string) =>
+function parseBlog(fm: unknown): BlogFrontmatter {
+  if (import.meta.env.SSR) {
+    return z
+      .object({
+        title: z.string(),
+        description: z.string(),
+        date: z.string(),
+        tags: z.array(z.string()).default([]),
+      })
+      .parse(fm) as BlogFrontmatter
+  }
+  return fm as BlogFrontmatter
+}
+
+export const slugFromPath = (p: string) =>
   p
     .split('/')
     .pop()!
     .replace(/\.mdx$/, '')
 
-// Eagerly load all MDX at build time (works in SSG + client).
-const workModules = import.meta.glob('/content/work/*.mdx', {
+// Load ONLY frontmatter eagerly (lightweight metadata for listings + routing).
+// MDX body components are loaded in ./bodies, imported only by the lazy detail
+// routes — so they never ship in the homepage/main bundle.
+const workMeta = import.meta.glob('/content/work/*.mdx', {
   eager: true,
-}) as Record<string, MdxModule>
-const blogModules = import.meta.glob('/content/blog/*.mdx', {
+  import: 'frontmatter',
+}) as Record<string, unknown>
+const blogMeta = import.meta.glob('/content/blog/*.mdx', {
   eager: true,
-}) as Record<string, MdxModule>
+  import: 'frontmatter',
+}) as Record<string, unknown>
 
-export const workEntries: WorkEntry[] = Object.entries(workModules)
-  .map(([path, mod]) => ({
+export const workEntries: WorkEntry[] = Object.entries(workMeta)
+  .map(([path, fm]) => ({
     slug: slugFromPath(path),
-    frontmatter: workSchema.parse(mod.frontmatter),
-    Component: mod.default,
+    frontmatter: parseWork(fm),
   }))
   .sort((a, b) => a.frontmatter.order - b.frontmatter.order)
 
-export const blogEntries: BlogEntry[] = Object.entries(blogModules)
-  .map(([path, mod]) => ({
+export const blogEntries: BlogEntry[] = Object.entries(blogMeta)
+  .map(([path, fm]) => ({
     slug: slugFromPath(path),
-    frontmatter: blogSchema.parse(mod.frontmatter),
-    Component: mod.default,
+    frontmatter: parseBlog(fm),
   }))
   .sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
 

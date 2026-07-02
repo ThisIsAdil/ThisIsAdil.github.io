@@ -25,10 +25,7 @@ export default function ProcessSection() {
               {/* connecting gradient line */}
               <div
                 className="absolute bottom-5 left-5 top-5 w-px"
-                style={{
-                  backgroundImage:
-                    'linear-gradient(var(--accent-500), var(--violet-500))',
-                }}
+                style={{ backgroundColor: 'var(--color-accent)' }}
                 aria-hidden
               />
               <ol className="space-y-10">

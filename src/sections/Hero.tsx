@@ -14,7 +14,7 @@ const WORDS = ['Websites', 'and', 'platforms,', 'engineered', 'to', 'perform.']
 const ACCENT_FROM = 3
 
 const flashlight: CSSProperties = {
-  backgroundImage: 'radial-gradient(var(--accent-400) 1px, transparent 1px)',
+  backgroundImage: 'radial-gradient(var(--depth-color) 1px, transparent 1px)',
   backgroundSize: '22px 22px',
   maskImage:
     'radial-gradient(260px circle at var(--mx, 50%) var(--my, -20%), #000 0%, transparent 65%)',

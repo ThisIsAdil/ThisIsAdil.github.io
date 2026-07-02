@@ -16,11 +16,7 @@ export default function Eyebrow({
         className,
       )}
     >
-      <span
-        className="h-px w-7 rounded-full"
-        style={{ backgroundImage: 'var(--gradient-brand)' }}
-        aria-hidden
-      />
+      <span className="h-px w-7 rounded-full bg-accent" aria-hidden />
       {children}
     </p>
   )

@@ -53,8 +53,7 @@ export default function FeaturedWork() {
                   <div className={cn(flip && 'lg:order-1')}>
                     <p className="flex items-center gap-2.5 text-xs font-medium uppercase tracking-widest text-fg-subtle">
                       <span
-                        className="h-px w-6 rounded-full"
-                        style={{ backgroundImage: 'var(--gradient-brand)' }}
+                        className="h-px w-6 rounded-full bg-accent"
                         aria-hidden
                       />
                       {fm.industry}

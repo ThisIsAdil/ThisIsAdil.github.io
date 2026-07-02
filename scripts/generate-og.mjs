@@ -7,10 +7,10 @@ const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http:/
   <rect width="1200" height="630" fill="#0a0a0b"/>
   <circle cx="1080" cy="70" r="640" fill="#ffffff" opacity="0.04"/>
   <g font-family="Helvetica, Arial, sans-serif" fill="#fafafa">
-    <text x="90" y="150" font-size="26" letter-spacing="4" fill="#a1a1aa">BUILD WITH ADIL</text>
-    <text x="86" y="330" font-size="88" font-weight="700" letter-spacing="-2">Thoughtfully engineered</text>
-    <text x="86" y="440" font-size="88" font-weight="700" letter-spacing="-2">websites, built to perform.</text>
-    <text x="90" y="545" font-size="34" fill="#a1a1aa">Adil Shaikh — Freelance Full-Stack Web Developer</text>
+    <text x="90" y="150" font-size="26" letter-spacing="6" fill="#a1a1aa">ADIL SHAIKH</text>
+    <text x="86" y="330" font-size="88" font-weight="700" letter-spacing="-2">Websites and platforms,</text>
+    <text x="86" y="440" font-size="88" font-weight="700" letter-spacing="-2">engineered to perform.</text>
+    <text x="90" y="545" font-size="34" fill="#a1a1aa">Freelance Full-Stack Web Developer</text>
   </g>
 </svg>`
 

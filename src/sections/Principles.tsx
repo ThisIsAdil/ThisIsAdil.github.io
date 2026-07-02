@@ -1,9 +1,9 @@
 import {
-  Gauge,
   MessageSquare,
-  Search,
   ShieldCheck,
-  Wrench,
+  Sparkles,
+  Target,
+  TrendingUp,
   type LucideIcon,
 } from 'lucide-react'
 import { Container, Section } from '../ui'
@@ -17,40 +17,36 @@ interface Cell {
   body: string
   span?: string
   feature?: boolean
-  stat?: string
-  statLabel?: string
 }
 
 const cells: Cell[] = [
   {
-    icon: Gauge,
-    title: 'Performance is a feature',
-    body: 'Fast, stable pages by default — Core Web Vitals treated as part of the build, never a cleanup task at the end.',
+    icon: Target,
+    title: 'Business-first thinking',
+    body: 'I start with what you’re actually trying to achieve — more enquiries, more enrolments, growth — and build toward it. The technology is a means, never the point. That’s the difference between a website and a result.',
     span: 'md:col-span-2 md:row-span-2',
     feature: true,
-    stat: '100',
-    statLabel: 'Lighthouse performance',
-  },
-  {
-    icon: Search,
-    title: 'Findable by design',
-    body: 'Semantic structure and technical SEO built in from the first line.',
-  },
-  {
-    icon: ShieldCheck,
-    title: 'Accessible by default',
-    body: 'WCAG 2.2 AA — keyboard, contrast, and screen-reader tested.',
   },
   {
     icon: MessageSquare,
-    title: 'Direct and senior',
-    body: 'You work with me — no account managers, no handoff telephone game.',
+    title: 'Clear communication',
+    body: 'Regular, jargon-free updates. You always know where things stand and what happens next.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Built to grow',
+    body: 'Structured to scale with you — add pages, features, and traffic without a rebuild.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Ownership, end to end',
+    body: 'I take responsibility for the outcome — from the first call to launch and beyond — not just my slice of it.',
     span: 'md:col-span-2',
   },
   {
-    icon: Wrench,
-    title: 'Built to maintain',
-    body: 'Clean, typed, documented code your team can grow with.',
+    icon: Sparkles,
+    title: 'Attention to detail',
+    body: 'The small, considered touches that make a product feel trustworthy and premium.',
   },
 ]
 
@@ -60,9 +56,9 @@ export default function Principles() {
       <Section>
         <Container>
           <SectionHeading
-            eyebrow="How I think"
-            title="Principles I build on"
-            intro="The habits behind work that performs — and keeps performing after launch."
+            eyebrow="How I work with you"
+            title="Why clients keep working with me"
+            intro="Not the frameworks — the things that actually decide whether a project succeeds."
           />
 
           <div className="mt-12 grid auto-rows-[minmax(180px,1fr)] grid-cols-1 gap-4 md:grid-cols-3">
@@ -78,30 +74,25 @@ export default function Principles() {
                     cell.feature ? 'bg-bg-subtle' : 'bg-surface',
                   )}
                 >
-                  <span className="relative grid size-11 place-items-center rounded-lg border border-border bg-surface text-fg">
+                  <span className="grid size-11 place-items-center rounded-lg border border-border bg-surface text-fg">
                     <cell.icon className="size-5" aria-hidden />
                   </span>
-
-                  {cell.feature && cell.stat && (
-                    <div className="relative mt-6">
-                      <span className="text-gradient font-display text-6xl font-bold tracking-tight">
-                        {cell.stat}
-                      </span>
-                      <span className="mt-1 block text-sm text-fg-subtle">
-                        {cell.statLabel}
-                      </span>
-                    </div>
-                  )}
-
                   <h3
                     className={cn(
-                      'relative font-display font-semibold',
-                      cell.feature ? 'mt-6 text-2xl' : 'mt-5 text-lg',
+                      'font-display font-semibold',
+                      cell.feature
+                        ? 'mt-6 text-2xl sm:text-3xl'
+                        : 'mt-5 text-lg',
                     )}
                   >
                     {cell.title}
                   </h3>
-                  <p className="relative mt-2 text-sm leading-relaxed text-fg-muted">
+                  <p
+                    className={cn(
+                      'mt-2 leading-relaxed text-fg-muted',
+                      cell.feature ? 'max-w-md text-base' : 'text-sm',
+                    )}
+                  >
                     {cell.body}
                   </p>
                 </div>

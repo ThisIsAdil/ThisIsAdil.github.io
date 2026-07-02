@@ -1,13 +1,42 @@
 import { Link } from 'react-router-dom'
 import Eyebrow from '../components/Eyebrow'
-import { Check } from 'lucide-react'
-import { Badge, Button, Container, Section } from '../ui'
+import {
+  BarChart3,
+  CalendarClock,
+  Check,
+  Cloud,
+  CreditCard,
+  FileText,
+  Gauge,
+  LayoutDashboard,
+  Lock,
+  Plug,
+  Search,
+  Sparkles,
+  type LucideIcon,
+} from 'lucide-react'
+import { Button, Container, Section } from '../ui'
 import SeoHead from '../components/SeoHead'
 import ScrollReveal from '../components/ScrollReveal'
 import SectionHeading from '../components/SectionHeading'
 import ProcessSection from '../sections/ProcessSection'
 import FinalCTA from '../sections/FinalCTA'
-import { services, stack } from '../data/content'
+import { services } from '../data/content'
+
+const capabilities: { icon: LucideIcon; label: string }[] = [
+  { icon: Sparkles, label: 'AI integration' },
+  { icon: CreditCard, label: 'Payment gateways' },
+  { icon: Lock, label: 'Secure authentication' },
+  { icon: LayoutDashboard, label: 'Admin dashboards' },
+  { icon: FileText, label: 'Content management (CMS)' },
+  { icon: CalendarClock, label: 'Booking & scheduling' },
+  { icon: BarChart3, label: 'Analytics & reporting' },
+  { icon: Search, label: 'Technical SEO' },
+  { icon: Gauge, label: 'Performance optimization' },
+  { icon: Plug, label: 'Third-party API integrations' },
+  { icon: Cloud, label: 'Cloud deployment' },
+  { icon: Check, label: 'Accessibility (WCAG)' },
+]
 
 export default function Services() {
   return (
@@ -74,17 +103,25 @@ export default function Services() {
       {/* Process (reused from homepage for cohesion) */}
       <ProcessSection />
 
-      {/* Stack */}
+      {/* Capabilities */}
       <Section className="border-t border-border">
         <Container>
           <SectionHeading
-            eyebrow="Stack"
-            title="Built with modern, maintainable tools"
-            intro="A proven, well-supported toolset — chosen for speed, reliability, and longevity, not novelty."
+            eyebrow="Capabilities"
+            title="What I can build into your product"
+            intro="Beyond a website — the features that turn a site into a system that works for your business."
           />
-          <div className="mt-8 flex flex-wrap gap-3">
-            {stack.map((tech) => (
-              <Badge key={tech}>{tech}</Badge>
+          <div className="mt-10 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {capabilities.map((c) => (
+              <div
+                key={c.label}
+                className="flex items-center gap-3 rounded-xl border border-border bg-surface p-4 shadow-sm transition-[transform,border-color] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] hover:-translate-y-0.5 hover:border-border-strong"
+              >
+                <span className="grid size-10 shrink-0 place-items-center rounded-lg border border-border bg-bg-subtle text-fg">
+                  <c.icon className="size-5" aria-hidden />
+                </span>
+                <span className="text-sm font-medium">{c.label}</span>
+              </div>
             ))}
           </div>
           <Button asChild className="mt-10">

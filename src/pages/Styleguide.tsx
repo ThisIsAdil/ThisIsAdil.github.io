@@ -54,7 +54,7 @@ export default function Styleguide() {
   return (
     <>
       <Head>
-        <title>Styleguide — Build with Adil</title>
+        <title>Styleguide — Adil Shaikh</title>
         <meta name="robots" content="noindex, nofollow" />
       </Head>
 

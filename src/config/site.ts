@@ -4,7 +4,7 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 export const site = {
-  name: 'Build with Adil',
+  name: 'Adil Shaikh',
   author: 'Adil Shaikh',
   title: 'Freelance Full-Stack Web Developer',
 

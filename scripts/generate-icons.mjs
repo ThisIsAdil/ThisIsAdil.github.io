@@ -5,7 +5,7 @@ import { writeFile } from 'node:fs/promises'
 
 const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
   <rect width="100" height="100" rx="24" fill="#0a0a0b"/>
-  <text x="50" y="72" font-family="Helvetica, Arial, sans-serif" font-size="62" font-weight="700" fill="#ffffff" text-anchor="middle">a</text>
+  <text x="50" y="67" font-family="Helvetica, Arial, sans-serif" font-size="40" font-weight="700" letter-spacing="-1" fill="#ffffff" text-anchor="middle">AS</text>
 </svg>`
 
 await writeFile('public/favicon.svg', svg)

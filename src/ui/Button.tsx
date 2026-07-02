@@ -12,7 +12,7 @@ const buttonVariants = cva(
       variant: {
         // Signature gradient — the primary CTA (indigo → violet).
         primary:
-          'text-white shadow-sm [background-image:var(--gradient-brand-strong)] hover:shadow-[0_10px_30px_-8px_rgba(99,102,241,0.6)] active:opacity-95',
+          'text-white shadow-sm [background-image:var(--gradient-brand-strong)] hover:shadow-[0_10px_30px_-8px_rgba(14,116,144,0.6)] active:opacity-95',
         // Solid ink — a quieter strong action.
         ink: 'bg-fg text-bg hover:opacity-90 active:opacity-100',
         secondary:

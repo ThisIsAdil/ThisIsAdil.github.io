@@ -88,23 +88,30 @@ export default function WorkDetail() {
             <Component />
           </Prose>
 
-          {/* Gallery — multiple project images (placeholders for now). */}
+          {/* Gallery — bento composition (placeholders for now). */}
           <div className="mt-16">
             <h2 className="font-display text-xl font-semibold">Gallery</h2>
-            <div className="mt-6 grid gap-4 sm:grid-cols-2">
-              <BrowserFrame className="sm:col-span-2">
+            <p className="mt-2 text-sm text-fg-muted">
+              A closer look at the interface and key screens.
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-6">
+              <BrowserFrame className="sm:col-span-4">
                 <ImagePlaceholder
-                  label={`[${fm.title} — Screen 1]`}
-                  className="aspect-[16/9] rounded-none border-0"
+                  label={`[${fm.title} — Desktop]`}
+                  className="aspect-[16/10] rounded-none border-0"
                 />
               </BrowserFrame>
               <ImagePlaceholder
-                label={`[${fm.title} — Screen 2]`}
-                className="aspect-[4/3]"
+                label={`[${fm.title} — Mobile]`}
+                className="aspect-[3/4] sm:col-span-2"
               />
               <ImagePlaceholder
-                label={`[${fm.title} — Screen 3]`}
-                className="aspect-[4/3]"
+                label={`[${fm.title} — Detail 1]`}
+                className="aspect-[16/9] sm:col-span-3"
+              />
+              <ImagePlaceholder
+                label={`[${fm.title} — Detail 2]`}
+                className="aspect-[16/9] sm:col-span-3"
               />
             </div>
           </div>

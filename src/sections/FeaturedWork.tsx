@@ -14,7 +14,7 @@ export default function FeaturedWork() {
       <Container>
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
-            eyebrow="Selected work"
+            eyebrow="Featured work"
             title="Products, not just websites"
             intro="A few builds where structure, performance, and product thinking did the heavy lifting — education-led."
           />

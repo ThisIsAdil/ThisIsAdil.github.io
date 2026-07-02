@@ -10,8 +10,8 @@ import {
   Principles,
   ProcessSection,
   ProofSection,
+  RecentWork,
   ServicesOverview,
-  TrustBand,
 } from '../sections'
 
 export default function Home() {
@@ -23,8 +23,8 @@ export default function Home() {
         jsonLd={[personLd(), websiteLd(), faqLd(faqs)]}
       />
       <Hero />
-      <TrustBand />
       <FeaturedWork />
+      <RecentWork />
       <Principles />
       <ServicesOverview />
       <ProcessSection />

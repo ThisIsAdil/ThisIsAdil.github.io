@@ -59,7 +59,7 @@ export const decisions: Decision[] = [
       'The academy’s staff aren’t developers, but their content changes constantly — new courses, faculty, results, resources.',
     decision:
       'I built an admin CMS the team runs themselves, instead of a site that needs me for every edit.',
-    why: 'Ownership only means something if you can actually use it. A site the owner can’t update quietly dies.',
+    why: 'Ownership only means something if you can use it. A site its owner can’t update slowly dies.',
     result:
       'Staff publish courses, resources, and blog posts on their own — no developer in the loop.',
   },
@@ -155,7 +155,7 @@ export const process: ProcessStep[] = [
   {
     title: 'Understand',
     description:
-      'We start with the business — your goals, your audience, and what a win actually looks like. Not the tech.',
+      'We start with the business: your goals, your audience, and what a win looks like. Not the tech.',
   },
   {
     title: 'Design',
@@ -188,7 +188,7 @@ export const faqs: Faq[] = [
     a: 'Yes. I work remotely with clients worldwide, and I’m used to working across time zones.',
   },
   {
-    q: 'Who will I actually be working with?',
+    q: 'Who will I be working with?',
     a: 'Me, directly. No account managers, no handoffs to a junior — the person you talk to is the person who builds it.',
   },
   {

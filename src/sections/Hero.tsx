@@ -112,9 +112,9 @@ export default function Hero() {
           className="animate-in mx-auto mt-8 max-w-2xl text-balance text-lg leading-relaxed text-fg-muted sm:text-xl"
           style={delay(620)}
         >
-          I’m Adil Shaikh — I build fast, SEO-strong sites and learning platforms
-          for academies and ambitious teams worldwide. Senior engineering and
-          product thinking, direct from the person who writes the code.
+          I’m Adil Shaikh. I build fast, SEO-strong sites and learning platforms
+          for academies and ambitious teams worldwide, with the product thinking
+          of a top team and none of the agency distance.
         </p>
 
         <div

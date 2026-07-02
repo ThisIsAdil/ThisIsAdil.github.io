@@ -25,14 +25,20 @@ export const site = {
     // Real form endpoint. Get a FREE access key at https://web3forms.com (enter
     // your email, they mail you a key — no account). Paste it here and the contact
     // form emails you directly. Left empty → falls back to a pre-filled mailto.
-    web3formsKey: '',
+    web3formsKey: '79be459a-fbd3-469b-a5d5-1a79fe76af8c',
   },
 
-  // Privacy-friendly analytics. Both are optional and OFF until you add a value.
-  //  • Plausible: create a site at https://plausible.io, put the domain here.
-  //  • Cloudflare Web Analytics (free): add your site at dash.cloudflare.com,
-  //    copy the beacon token here. No cookie banner needed for either.
+  // Privacy-friendly analytics. All optional and OFF until you add a value.
+  // RECOMMENDED (free, easy, no cookie banner): Umami Cloud.
+  //   1. Sign up at https://cloud.umami.is (free "Hobby" tier).
+  //   2. Add your website → Settings → Tracking code.
+  //   3. Copy the two values below from that snippet:
+  //        umamiSrc       = the script `src` (e.g. https://cloud.umami.is/script.js)
+  //        umamiWebsiteId = the `data-website-id` (a UUID)
+  // Others (leave blank unless you use them): Plausible domain, Cloudflare token.
   analytics: {
+    umamiSrc: '',
+    umamiWebsiteId: '',
     plausibleDomain: '',
     cloudflareToken: '',
   },

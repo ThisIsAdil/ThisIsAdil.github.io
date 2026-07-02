@@ -10,7 +10,20 @@ import { site } from '../config/site'
 export default function Analytics() {
   useEffect(() => {
     if (typeof document === 'undefined') return
-    const { plausibleDomain, cloudflareToken } = site.analytics
+    const { umamiSrc, umamiWebsiteId, plausibleDomain, cloudflareToken } =
+      site.analytics
+
+    if (
+      umamiSrc &&
+      umamiWebsiteId &&
+      !document.querySelector('script[data-website-id]')
+    ) {
+      const s = document.createElement('script')
+      s.defer = true
+      s.src = umamiSrc
+      s.setAttribute('data-website-id', umamiWebsiteId)
+      document.head.appendChild(s)
+    }
 
     if (plausibleDomain && !document.querySelector('script[data-domain]')) {
       const s = document.createElement('script')

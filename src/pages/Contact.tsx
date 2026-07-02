@@ -73,24 +73,16 @@ export default function Contact() {
     if (site.contact.web3formsKey) {
       setSubmitting(true)
       setError(false)
+      // Multipart FormData is a CORS-simple request (no preflight) — the robust,
+      // documented way to call Web3Forms from the browser. `data` already holds
+      // the form fields (incl. the botcheck honeypot).
+      data.append('access_key', site.contact.web3formsKey)
+      data.append('subject', `New project enquiry — ${payload.name || 'website'}`)
+      data.append('from_name', payload.name || 'Website enquiry')
       try {
         const res = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/json',
-          },
-          body: JSON.stringify({
-            access_key: site.contact.web3formsKey,
-            subject: `New project enquiry — ${payload.name || 'website'}`,
-            from_name: payload.name || 'Website enquiry',
-            name: payload.name,
-            email: payload.email,
-            project_type: payload.projectType,
-            timeline: payload.timeline,
-            budget: payload.budget,
-            message: payload.message,
-          }),
+          body: data,
         })
         const json = (await res.json()) as { success?: boolean }
         if (json.success) {
@@ -170,6 +162,16 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="grid gap-6">
+                {/* Honeypot — hidden from humans; bots fill it and get rejected. */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                  style={{ display: 'none' }}
+                />
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className={fieldLabel}>

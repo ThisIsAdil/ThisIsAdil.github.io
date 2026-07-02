@@ -5,7 +5,7 @@ import { site } from '../config/site'
 import { GithubIcon, LinkedinIcon } from './BrandIcons'
 
 const iconLink =
-  'inline-flex size-9 items-center justify-center rounded-md border border-border text-fg-muted transition-colors duration-[var(--duration-fast)] hover:border-border-strong hover:text-fg'
+  'inline-flex size-9 items-center justify-center rounded-full border border-border text-fg-muted transition-colors duration-[var(--duration-fast)] hover:border-fg hover:text-fg'
 
 const listLink =
   'text-sm text-fg-muted transition-colors duration-[var(--duration-fast)] hover:text-fg'

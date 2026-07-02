@@ -4,14 +4,14 @@ import { faqs } from '../data/content'
 import {
   AboutSnippet,
   FAQSection,
-  FeaturedWork,
   FinalCTA,
   Hero,
   Principles,
   ProcessSection,
   ProofSection,
-  RecentWork,
   ServicesOverview,
+  StatementSection,
+  WorkShowcase,
 } from '../sections'
 
 export default function Home() {
@@ -23,10 +23,10 @@ export default function Home() {
         jsonLd={[personLd(), websiteLd(), faqLd(faqs)]}
       />
       <Hero />
-      <FeaturedWork />
-      <RecentWork />
-      <Principles />
+      <StatementSection />
+      <WorkShowcase />
       <ServicesOverview />
+      <Principles />
       <ProcessSection />
       <ProofSection />
       <AboutSnippet />

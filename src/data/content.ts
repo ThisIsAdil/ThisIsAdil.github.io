@@ -1,6 +1,10 @@
 // Homepage content, derived from docs/content-intake.md (the source of truth).
 // Real facts only — no invented metrics, testimonials, or outcomes. Prices are
 // filled in from `priceFrom` once provided; until then the UI shows "Custom quote".
+//
+// Voice: business-first, plain, human. Say what the client gets and why it
+// matters — not the frameworks. EdTech / academies lead, because that's where
+// the strongest proof is.
 
 export interface Service {
   slug: string
@@ -23,97 +27,99 @@ export interface Faq {
 
 export const services: Service[] = [
   {
-    slug: 'business-websites',
-    title: 'Business Websites',
-    forWho: 'Startups, agencies, and professional services.',
-    outcome: 'A fast, credible website that turns visitors into enquiries.',
+    slug: 'academy-platforms',
+    title: 'Academy & learning platforms',
+    forWho: 'Coaching institutes, academies, and EdTech businesses.',
+    outcome:
+      'A platform that wins enrolments and actually supports students — not just a brochure that looks nice.',
     includes: [
-      'Strategy',
-      'UI development',
-      'Responsive design',
-      'Performance optimization',
-      'SEO foundations',
-      'Deployment',
+      'Marketing site that builds trust',
+      'Student portal',
+      'Faculty & admin tools',
+      'Course and content management',
+      'Payments & enquiries',
+      'SEO and performance',
     ],
-    // priceFrom: 'TODO — awaiting figure',
   },
   {
-    slug: 'academy-platforms',
-    title: 'Academy Websites & Learning Platforms',
-    forWho: 'Coaching institutes, online academies, and EdTech businesses.',
-    outcome: 'A scalable platform to attract, manage, and support students.',
+    slug: 'business-websites',
+    title: 'Business websites',
+    forWho: 'Startups, agencies, and professional services.',
+    outcome:
+      'A fast, credible website that makes a good business look serious — and turns visitors into enquiries.',
     includes: [
-      'Marketing website',
-      'Student portal',
-      'Admin CMS',
-      'Course management',
-      'SEO',
-      'Performance',
-      'Responsive design',
+      'Positioning & structure',
+      'Design and build',
+      'Responsive across devices',
+      'Performance optimisation',
+      'SEO foundations',
+      'Deployment & handover',
     ],
   },
   {
     slug: 'performance-seo',
-    title: 'Performance & SEO Optimization',
-    forWho: 'Existing sites that need better speed, visibility, and quality.',
+    title: 'Performance & SEO',
+    forWho: 'Existing sites that load slowly or stay invisible.',
     outcome:
-      'A faster, more visible site — better Core Web Vitals and cleaner technical SEO.',
+      'A faster site that ranks and converts better — measured, not guessed.',
     includes: [
       'Technical SEO',
       'Core Web Vitals',
-      'Lighthouse optimization',
+      'Lighthouse optimisation',
       'Accessibility',
       'Structured data',
-      'Metadata',
+      'Metadata & fixes',
     ],
   },
 ]
 
 export const process: ProcessStep[] = [
   {
-    title: 'Strategy',
+    title: 'Understand',
     description:
-      'We start with your goals, your audience, and what a win actually looks like.',
+      'We start with the business — your goals, your audience, and what a win actually looks like. Not the tech.',
   },
   {
     title: 'Design',
     description:
-      'Structure and interface built for clarity, trust, and conversion.',
+      'Structure and interface built for clarity, trust, and conversion. You see it before it’s built.',
   },
   {
     title: 'Build',
-    description: 'Fast, accessible, SEO-strong engineering — no shortcuts.',
+    description:
+      'Fast, accessible, SEO-strong engineering — no shortcuts, no throwaway code.',
   },
   {
     title: 'Launch & support',
-    description: 'Deployment, a clean handover, and ongoing improvements.',
+    description:
+      'Deployment, a clean handover you fully own, and ongoing improvements as you grow.',
   },
 ]
 
 export const faqs: Faq[] = [
   {
     q: 'What’s a typical project timeline?',
-    a: 'Two to eight weeks, depending on scope. We agree a clear timeline before starting.',
+    a: 'Two to eight weeks, depending on scope. We agree a clear timeline before anything starts.',
   },
   {
     q: 'How does pricing work?',
-    a: 'Fixed-price projects with milestone-based payments — so there are no surprises.',
+    a: 'Fixed-price projects with milestone-based payments — so you know the number up front, with no surprises.',
   },
   {
     q: 'Do you work internationally?',
-    a: 'Yes. I work remotely with clients worldwide.',
+    a: 'Yes. I work remotely with clients worldwide, and I’m used to working across time zones.',
   },
   {
-    q: 'What’s your technology stack?',
-    a: 'React, TypeScript, Node.js, Express, MongoDB, and Tailwind CSS — modern, maintainable web technologies.',
+    q: 'Who will I actually be working with?',
+    a: 'Me, directly. No account managers, no handoffs to a junior — the person you talk to is the person who builds it.',
   },
   {
     q: 'Do you offer maintenance after launch?',
-    a: 'Yes. Ongoing maintenance and improvements are available.',
+    a: 'Yes. Ongoing maintenance, improvements, and support are available once you’re live.',
   },
   {
     q: 'Who owns the project?',
-    a: 'You do — full ownership on completion and final payment.',
+    a: 'You do — full ownership of the code and content on completion and final payment.',
   },
 ]
 
@@ -140,21 +146,7 @@ export interface Testimonial {
   temporary?: boolean
 }
 
-// ⚠️ TEMPORARY placeholder testimonials for development only.
-// Replace with client-approved quotes before production launch.
-export const testimonials: Testimonial[] = [
-  {
-    quote:
-      'Working with Adil was a great experience from start to finish. He understood our vision quickly, suggested thoughtful improvements, and delivered a platform that truly reflects the quality of our academy. His attention to performance, usability, and long-term maintainability made him a valuable long-term development partner.',
-    name: 'Amir Akhtar',
-    role: 'Founder, Future Meds Academy',
-    temporary: true,
-  },
-  {
-    quote:
-      'Adil approached the project with professionalism and attention to detail. He transformed our ideas into a modern learning platform while keeping communication clear throughout the project. The final platform provides a significantly better experience for both our students and our team.',
-    name: 'Sahib Akhtar',
-    role: 'Founder, Blooms Academy',
-    temporary: true,
-  },
-]
+// Real client quotes exist (Future Meds, Blooms) but wording isn't approved to
+// publish yet — so the Proof section shows clearly-marked placeholders for now.
+// Once approved, drop the quotes in here and render them.
+export const testimonials: Testimonial[] = []

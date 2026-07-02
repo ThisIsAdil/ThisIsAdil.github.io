@@ -2,6 +2,7 @@ import { ArrowUpRight, CalendarClock, Mail, MessageCircle } from 'lucide-react'
 import Eyebrow from '../components/Eyebrow'
 import { Card, Container } from '../ui'
 import SeoHead from '../components/SeoHead'
+import Headshot from '../components/Headshot'
 import { site } from '../config/site'
 
 const channels = [
@@ -59,7 +60,7 @@ export default function Contact() {
             >
               <Card interactive className="flex h-full flex-col p-7">
                 <span
-                  className="grid size-11 place-items-center rounded-md border border-border bg-bg-subtle text-fg"
+                  className="grid size-11 place-items-center rounded-xl border border-border bg-bg-subtle text-fg"
                   aria-hidden
                 >
                   <c.icon className="size-5" />
@@ -80,9 +81,21 @@ export default function Contact() {
           ))}
         </div>
 
-        <p className="mt-12 text-sm text-fg-subtle">
-          Based in {site.location} — working with clients worldwide.
-        </p>
+        <div className="mt-14 flex flex-col gap-5 rounded-2xl border border-border bg-bg-subtle p-6 sm:flex-row sm:items-center sm:gap-6 sm:p-8">
+          <div className="size-16 shrink-0 overflow-hidden rounded-full border border-border shadow-sm">
+            <Headshot />
+          </div>
+          <div>
+            <p className="font-display text-lg font-semibold">
+              You’ll work directly with me
+            </p>
+            <p className="mt-1 text-fg-muted">
+              No account managers, no handoffs — the person you talk to is the
+              person who builds it. Based in {site.location}, working with
+              clients worldwide.
+            </p>
+          </div>
+        </div>
       </Container>
     </>
   )

@@ -5,7 +5,10 @@ export interface WorkFrontmatter {
   industry: string
   role: string
   summary: string
+  /** Tech tags — technical detail, shown on the case-study page. */
   tags: string[]
+  /** Client-language capabilities — what the business got. Shown in listings. */
+  highlights: string[]
   featured: boolean
   order: number
 }
@@ -37,6 +40,7 @@ function parseWork(fm: unknown): WorkFrontmatter {
         role: z.string(),
         summary: z.string(),
         tags: z.array(z.string()),
+        highlights: z.array(z.string()).default([]),
         featured: z.boolean().default(false),
         order: z.number().default(999),
       })

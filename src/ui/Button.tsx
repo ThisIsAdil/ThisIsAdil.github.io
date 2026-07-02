@@ -6,11 +6,11 @@ import { cn } from '../lib/cn'
 
 const buttonVariants = cva(
   // Base: layout, shape, motion, and disabled/focus behaviour shared by all.
-  'relative inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-[color,background-color,border-color,opacity] duration-[var(--duration-fast)] disabled:pointer-events-none disabled:opacity-50',
+  'relative inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium transition-[color,background-color,border-color,opacity,transform] duration-[var(--duration-fast)] disabled:pointer-events-none disabled:opacity-50',
   {
     variants: {
       variant: {
-        // Solid crimson accent — the primary CTA.
+        // Solid Electric Violet — the one place colour is loud: the primary CTA.
         primary:
           'text-white shadow-sm [background-color:var(--color-accent-solid)] hover:opacity-90 active:opacity-100',
         // Solid ink — a quieter strong action.

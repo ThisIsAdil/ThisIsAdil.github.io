@@ -98,7 +98,7 @@ export default function About() {
                 <ScrollReveal key={p.title} delay={i * 60}>
                   <div className="flex gap-4">
                     <span
-                      className="grid size-11 shrink-0 place-items-center rounded-md border border-border bg-surface text-fg"
+                      className="grid size-11 shrink-0 place-items-center rounded-xl border border-border bg-surface text-fg"
                       aria-hidden
                     >
                       <p.icon className="size-5" />

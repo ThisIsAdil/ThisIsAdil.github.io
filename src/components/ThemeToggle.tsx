@@ -11,7 +11,7 @@ export default function ThemeToggle() {
       aria-label={
         theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme'
       }
-      className="inline-flex size-9 items-center justify-center rounded-md border border-border text-fg-muted transition-colors duration-[var(--duration-fast)] hover:border-border-strong hover:text-fg"
+      className="inline-flex size-9 items-center justify-center rounded-full border border-border text-fg-muted transition-colors duration-[var(--duration-fast)] hover:border-fg hover:text-fg"
     >
       {/* Placeholder until mounted keeps SSG markup and first render identical. */}
       {theme === null ? (

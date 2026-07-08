@@ -138,7 +138,11 @@ export default function Contact() {
           {/* Qualification form */}
           <div>
             {sent ? (
-              <div className="rounded-2xl border border-border bg-bg-subtle p-8 sm:p-10">
+              <div
+                role="status"
+                aria-live="polite"
+                className="rounded-2xl border border-border bg-bg-subtle p-8 sm:p-10"
+              >
                 <span className="grid size-11 place-items-center rounded-full bg-accent/10 text-accent">
                   <Check className="size-5" aria-hidden />
                 </span>
@@ -279,7 +283,10 @@ export default function Contact() {
                   </span>
                 </div>
                 {error && (
-                  <p className="text-sm text-red-600 dark:text-red-400">
+                  <p
+                    role="alert"
+                    className="text-sm text-red-600 dark:text-red-400"
+                  >
                     Something went wrong sending that. Please try again, or
                     reach me on WhatsApp or at {site.contact.email}.
                   </p>

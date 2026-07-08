@@ -3,3 +3,7 @@ node_modules
 .vite
 pnpm-lock.yaml
 package-lock.json
+
+# Prettier's Markdown parser mangles MDX `{/* */}` expression comments
+# (turns them into `/_ _/`), which breaks the SSG build. Skip MDX.
+*.mdx

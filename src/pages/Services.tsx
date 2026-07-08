@@ -97,9 +97,8 @@ export default function Services() {
                     {service.outcome}
                   </p>
 
-                  {/* Prices are deliberately kept to the call (per brand strategy);
-                      `priceFrom` stays in the data if that ever changes. Timeline
-                      qualifies without anchoring value. */}
+                  {/* Prices are deliberately kept to the call (per brand strategy).
+                      Timeline qualifies the enquiry without anchoring value. */}
                   {service.timeline && (
                     <dl className="mt-6 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-5">
                       <div>

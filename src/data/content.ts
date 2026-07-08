@@ -1,6 +1,7 @@
 // Homepage content, derived from docs/content-intake.md (the source of truth).
-// Real facts only — no invented metrics, testimonials, or outcomes. Prices are
-// filled in from `priceFrom` once provided; until then the UI shows "Custom quote".
+// Real facts only — no invented metrics, testimonials, or outcomes. Pricing is
+// deliberately kept to the call (per brand strategy) — the UI shows a "Fixed
+// quote" and qualifies on timeline instead of anchoring a number.
 //
 // Voice: business-first, plain, human. Say what the client gets and why it
 // matters — not the frameworks. EdTech / academies lead, because that's where
@@ -14,8 +15,6 @@ export interface Service {
   outcome: string
   /** What the client actually gets — concrete deliverables. */
   includes: string[]
-  /** Typical starting price (USD). Anchors value + filters enquiries. */
-  priceFrom?: string
   /** Typical timeline for the starting scope. */
   timeline?: string
   /** One line naming the best-fit client, richer than `forWho`. */
@@ -107,7 +106,6 @@ export const services: Service[] = [
       'SEO architecture so you get found',
       'Deployment, handover & full code ownership',
     ],
-    priceFrom: '$5,000',
     timeline: '4–8 weeks',
   },
   {
@@ -127,7 +125,6 @@ export const services: Service[] = [
       'Contact/enquiry flows that convert',
       'Deployment, handover & full code ownership',
     ],
-    priceFrom: '$1,800',
     timeline: '2–4 weeks',
   },
   {
@@ -146,7 +143,6 @@ export const services: Service[] = [
       'Accessibility (WCAG) fixes',
       'A before/after report you can act on',
     ],
-    priceFrom: '$900',
     timeline: '1–2 weeks',
   },
 ]

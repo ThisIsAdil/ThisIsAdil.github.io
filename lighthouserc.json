@@ -1,7 +1,16 @@
 {
   "ci": {
     "collect": {
-      "staticDistDir": "./dist",
+      "startServerCommand": "npm run preview -- --port 4319 --strictPort",
+      "startServerReadyPattern": "Local:",
+      "url": [
+        "http://localhost:4319/",
+        "http://localhost:4319/about",
+        "http://localhost:4319/work",
+        "http://localhost:4319/services",
+        "http://localhost:4319/blog",
+        "http://localhost:4319/contact"
+      ],
       "numberOfRuns": 1,
       "settings": { "preset": "desktop" }
     },

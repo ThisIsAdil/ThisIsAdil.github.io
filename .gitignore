@@ -44,3 +44,6 @@ PERSONAL_BRAND_GUIDE.md
 .github/skills/
 _shot.mjs
 _formtest.mjs
+
+# Lighthouse CI local run artifacts
+.lighthouseci/

@@ -34,10 +34,20 @@ export default function Work() {
                   interactive
                   className="flex h-full flex-col overflow-hidden p-0"
                 >
-                  <ImagePlaceholder
-                    label={`[${fm.title} Screenshot]`}
-                    className="aspect-[16/10] rounded-none border-x-0 border-t-0"
-                  />
+                  {fm.cover ? (
+                    <img
+                      src={fm.cover}
+                      alt={`${fm.title} screenshot`}
+                      loading="lazy"
+                      decoding="async"
+                      className="aspect-[16/10] w-full object-cover object-top"
+                    />
+                  ) : (
+                    <ImagePlaceholder
+                      label={`[${fm.title} Screenshot]`}
+                      className="aspect-[16/10] rounded-none border-x-0 border-t-0"
+                    />
+                  )}
                   <div className="flex flex-1 flex-col p-7">
                     <p className="text-xs font-medium uppercase tracking-widest text-fg-subtle">
                       {fm.industry}

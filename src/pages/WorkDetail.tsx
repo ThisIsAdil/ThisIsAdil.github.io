@@ -82,10 +82,20 @@ export default function WorkDetail() {
         </div>
 
         <BrowserFrame className="mt-10">
-          <ImagePlaceholder
-            label={`[${fm.title} Screenshot]`}
-            className="aspect-[16/9] rounded-none border-0"
-          />
+          {fm.cover ? (
+            <img
+              src={fm.cover}
+              alt={`${fm.title} screenshot`}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[16/9] w-full object-cover object-top"
+            />
+          ) : (
+            <ImagePlaceholder
+              label={`[${fm.title} Screenshot]`}
+              className="aspect-[16/9] rounded-none border-0"
+            />
+          )}
         </BrowserFrame>
 
         {/* At a glance — honest spec strip (role/industry/stack + deliverables). */}
@@ -135,23 +145,44 @@ export default function WorkDetail() {
             <p className="mt-2 text-sm text-fg-muted">
               A closer look at the interface and key screens.
             </p>
-            <div className="mt-6 flex flex-col gap-4">
-              <BrowserFrame>
-                <ImagePlaceholder
-                  label={`[${fm.title} — Desktop, full screen]`}
-                  className="aspect-[16/9] rounded-none border-0"
-                />
-              </BrowserFrame>
-              <div className="grid gap-4 sm:grid-cols-3">
-                {['Mobile view', 'Key screen', 'Detail'].map((kind) => (
-                  <ImagePlaceholder
-                    key={kind}
-                    label={`[${fm.title} — ${kind}]`}
-                    className="aspect-[4/3]"
-                  />
+            {fm.gallery.length > 0 ? (
+              <div className="mt-6 grid gap-6 sm:grid-cols-2">
+                {fm.gallery.map((g) => (
+                  <figure key={g.image}>
+                    <BrowserFrame>
+                      <img
+                        src={g.image}
+                        alt={g.caption}
+                        loading="lazy"
+                        decoding="async"
+                        className="aspect-[16/10] w-full object-cover object-top"
+                      />
+                    </BrowserFrame>
+                    <figcaption className="mt-2 text-xs text-fg-subtle">
+                      {g.caption}
+                    </figcaption>
+                  </figure>
                 ))}
               </div>
-            </div>
+            ) : (
+              <div className="mt-6 flex flex-col gap-4">
+                <BrowserFrame>
+                  <ImagePlaceholder
+                    label={`[${fm.title} — Desktop, full screen]`}
+                    className="aspect-[16/9] rounded-none border-0"
+                  />
+                </BrowserFrame>
+                <div className="grid gap-4 sm:grid-cols-3">
+                  {['Mobile view', 'Key screen', 'Detail'].map((kind) => (
+                    <ImagePlaceholder
+                      key={kind}
+                      label={`[${fm.title} — ${kind}]`}
+                      className="aspect-[4/3]"
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
 
           {testimonial && (

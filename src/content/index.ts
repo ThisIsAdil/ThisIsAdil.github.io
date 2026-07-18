@@ -13,6 +13,10 @@ export interface WorkFrontmatter {
   scope: string[]
   featured: boolean
   order: number
+  /** Cover screenshot path (e.g. '/work/slug/cover.webp'). Omit to show a placeholder. */
+  cover?: string
+  /** Additional screenshots shown in the case-study gallery, each with a caption. */
+  gallery: { image: string; caption: string }[]
 }
 export interface BlogFrontmatter {
   title: string
@@ -46,6 +50,10 @@ function parseWork(fm: unknown): WorkFrontmatter {
         scope: z.array(z.string()).default([]),
         featured: z.boolean().default(false),
         order: z.number().default(999),
+        cover: z.string().optional(),
+        gallery: z
+          .array(z.object({ image: z.string(), caption: z.string() }))
+          .default([]),
       })
       .parse(fm) as WorkFrontmatter
   }

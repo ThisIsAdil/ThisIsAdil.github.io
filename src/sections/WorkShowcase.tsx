@@ -36,10 +36,20 @@ function WorkItem({
             className="pointer-events-none absolute -inset-8 -z-10 rounded-[2.5rem] bg-accent/[0.07] blur-3xl transition-opacity duration-500 group-hover:opacity-100 lg:opacity-70"
           />
           <BrowserFrame className="shadow-xl transition-[transform,border-color] duration-[var(--duration-base)] ease-[var(--ease-out-expo)] group-hover:-translate-y-1.5 group-hover:border-accent/50">
-            <ImagePlaceholder
-              label={`[${fm.title} Screenshot]`}
-              className="aspect-[16/10] rounded-none border-0 transition-transform duration-[var(--duration-slow)] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
-            />
+            {fm.cover ? (
+              <img
+                src={fm.cover}
+                alt={`${fm.title} screenshot`}
+                loading="lazy"
+                decoding="async"
+                className="aspect-[16/10] w-full object-cover object-top transition-transform duration-[var(--duration-slow)] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
+              />
+            ) : (
+              <ImagePlaceholder
+                label={`[${fm.title} Screenshot]`}
+                className="aspect-[16/10] rounded-none border-0 transition-transform duration-[var(--duration-slow)] ease-[var(--ease-out-expo)] group-hover:scale-[1.04]"
+              />
+            )}
           </BrowserFrame>
         </Link>
       </ScrollReveal>

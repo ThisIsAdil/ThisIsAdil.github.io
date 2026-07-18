@@ -54,15 +54,15 @@ export default function PersonProof() {
       <Section>
         <Container>
           {/* Who you're hiring */}
-          <div className="grid gap-12 md:grid-cols-[minmax(0,280px)_1fr] md:items-center md:gap-16">
+          <div className="grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
             <ScrollReveal>
-              <div className="relative mx-auto w-full max-w-[260px]">
+              <div className="relative mx-auto w-full">
                 <div
                   aria-hidden
                   className="absolute -inset-3 -z-10 rounded-2xl border border-border"
                 />
                 <div className="overflow-hidden rounded-xl border border-border shadow-md">
-                  <Headshot />
+                  <Headshot className="aspect-[1414/1113]" />
                 </div>
               </div>
             </ScrollReveal>

@@ -41,6 +41,7 @@ export default function WorkDetail() {
   const glance: { label: string; value: string }[] = [
     { label: 'Industry', value: fm.industry },
     { label: 'Role', value: fm.role },
+    ...(fm.status ? [{ label: 'Status', value: fm.status }] : []),
     { label: 'Stack', value: fm.tags.join(', ') },
   ]
 

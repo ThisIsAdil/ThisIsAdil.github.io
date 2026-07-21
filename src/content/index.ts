@@ -11,6 +11,8 @@ export interface WorkFrontmatter {
   highlights: string[]
   /** What was delivered (real deliverables) — powers the "At a glance" block. */
   scope: string[]
+  /** Delivery state, e.g. 'Live' or 'In final review'. Shown in "At a glance". */
+  status?: string
   featured: boolean
   order: number
   /** Cover screenshot path (e.g. '/work/slug/cover.webp'). Omit to show a placeholder. */
@@ -48,6 +50,7 @@ function parseWork(fm: unknown): WorkFrontmatter {
         tags: z.array(z.string()),
         highlights: z.array(z.string()).default([]),
         scope: z.array(z.string()).default([]),
+        status: z.string().optional(),
         featured: z.boolean().default(false),
         order: z.number().default(999),
         cover: z.string().optional(),

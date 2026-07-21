@@ -7,9 +7,19 @@ import remarkMdxFrontmatter from 'remark-mdx-frontmatter'
 import remarkGfm from 'remark-gfm'
 import { imagetools } from 'vite-imagetools'
 import { fileURLToPath, URL } from 'node:url'
-import { copyFile, readFile, readdir, writeFile } from 'node:fs/promises'
+import {
+  access,
+  copyFile,
+  readFile,
+  readdir,
+  writeFile,
+} from 'node:fs/promises'
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
 import { join } from 'node:path'
 import { site } from './src/config/site'
+
+const run = promisify(execFile)
 
 // react-helmet injects <title>/<meta> at the very start of <head>, pushing the
 // static charset past the first 1KB (a Lighthouse best-practice failure). Move
@@ -29,6 +39,38 @@ async function fixCharset(dir: string) {
 // Loads vite-react-ssg's `ssgOptions` augmentation onto Vite's config type.
 import type {} from 'vite-react-ssg'
 
+// The source file whose history actually governs a route's content. Content
+// routes come from their MDX; everything else from the matching page component.
+function sourceForRoute(route: string) {
+  const entry = route.match(/^\/(blog|work)\/(.+)$/)
+  if (entry) return `content/${entry[1]}/${entry[2]}.mdx`
+  if (route === '/') return 'src/pages/Home.tsx'
+  const name = route.slice(1)
+  if (!name || name.includes('/')) return null
+  return `src/pages/${name[0].toUpperCase()}${name.slice(1)}.tsx`
+}
+
+// Last commit date for a path, as the <lastmod> signal. Returns null when git
+// history isn't available (shallow clone, tarball build) — an omitted lastmod
+// is better than stamping every page with build time, which Google learns to
+// ignore. The deploy workflow checks out full history so this resolves there.
+async function lastModified(path: string | null) {
+  if (!path) return null
+  try {
+    await access(path)
+    const { stdout } = await run('git', [
+      'log',
+      '-1',
+      '--format=%cI',
+      '--',
+      path,
+    ])
+    return stdout.trim() || null
+  } catch {
+    return null
+  }
+}
+
 // Build a sitemap.xml from the prerendered pages (excluding 404 + styleguide).
 async function writeSitemap(dir: string) {
   const files = (await readdir(dir, { recursive: true })) as string[]
@@ -41,9 +83,15 @@ async function writeSitemap(dir: string) {
         .filter((r) => !r.startsWith('/styleguide') && !r.startsWith('/404')),
     ),
   ].sort()
-  const urls = routes
-    .map((r) => `  <url><loc>${site.url}${r}</loc></url>`)
-    .join('\n')
+  const urls = (
+    await Promise.all(
+      routes.map(async (r) => {
+        const mod = await lastModified(sourceForRoute(r))
+        const lastmod = mod ? `<lastmod>${mod}</lastmod>` : ''
+        return `  <url><loc>${site.url}${r}</loc>${lastmod}</url>`
+      }),
+    )
+  ).join('\n')
   const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>\n`
   await writeFile(join(dir, 'sitemap.xml'), xml)
 }

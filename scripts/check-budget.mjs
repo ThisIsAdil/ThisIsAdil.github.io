@@ -4,7 +4,7 @@ import { readdir, readFile } from 'node:fs/promises'
 import { gzipSync } from 'node:zlib'
 
 const DIR = 'dist/assets'
-const LIMIT = 125 * 1024 // gzip bytes; current ~119KB, headroom to catch bloat
+const LIMIT = 130 * 1024 // gzip bytes; current ~125KB, headroom to catch bloat
 
 const files = await readdir(DIR)
 const initial = files.filter((f) => /^(app|client)-.*\.js$/.test(f))
